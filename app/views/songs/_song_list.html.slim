@@ -1,0 +1,13 @@
+table.table.table-striped
+  thead
+    tr
+      th name
+      th album
+      th artist
+  tbody
+    - songs.each do |song|
+      tr
+        td= link_to song.name, song
+        td= song.album.name
+        td= song.artist.name
+        td= link_to 'Delete', song, method: "delete", data: { confirm: 'Are you sure?' }, class: 'btn btn-danger', :remote => true 

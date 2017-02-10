@@ -3,17 +3,6 @@
     = link_to "New", new_song_path, class: 'btn btn-primary'
     
   h1 Songs
-  
-table.table.table-striped
-  thead
-    tr
-      th name
-      th album
-      th artist
-  tbody
-    - @songs.each do |song|
-      tr
-        td= link_to song.name, song
-        td= song.album.name
-        td= song.artist.name
 
+#songlist
+  = render partial: "song_list" , :locals => { :songs => @songs }
