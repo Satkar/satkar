@@ -6,5 +6,5 @@ class Album < ActiveRecord::Base
   validates :cover_art, presence: true
   validates :released_on, presence: true, format: { with: /\A\d{4}-\d{2}-\d{2}\z/, message: "should be in the format YYYY-MM-DD" }
 
-  scope :latest, -> { order("updated_at").last }
+  scope :latest, -> { order("released_on").last }
 end

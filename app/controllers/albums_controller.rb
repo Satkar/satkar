@@ -4,7 +4,7 @@ class AlbumsController < ApplicationController
   respond_to :html
 
   def index
-    @albums = Album.all
+    @albums = Album.includes(:publisher)
     respond_with(@albums)
   end
 
