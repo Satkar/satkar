@@ -19,6 +19,11 @@
     .col-lg-10
       = f.text_field :released_on, class: 'form-control'
       = f.error_span(:released_on)
+  .form-group
+    = f.label :for_sale, class: 'control-label col-lg-2'
+    .col-lg-10
+      = f.text_field :for_sale, class: 'form-control'
+      = f.error_span(:for_sale)
   hr
   .form-group
     .col-lg-offset-2.col-lg-10
