@@ -7,4 +7,7 @@ class Album < ActiveRecord::Base
   validates :released_on, presence: true, format: { with: /\A\d{4}-\d{2}-\d{2}\z/, message: "should be in the format YYYY-MM-DD" }
 
   scope :latest, -> { order("released_on").last }
+  
+  # returns only the last n albums released during the past 6 months.
+  scope :recent, ->(n) { where("released_on > ?", 6.month.ago).order("released_on desc").limit(n) }
 end
