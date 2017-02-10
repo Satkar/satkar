@@ -9,9 +9,14 @@ class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
 
   before_action :latest_album
+  before_action :latest_two_albumms
 
   private
   	def latest_album
   		@latest_album = Album.latest
+  	end
+
+  	def latest_two_albumms
+  		@latest_two_albumms = Album.latest_two_albums
   	end
 end

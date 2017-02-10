@@ -10,4 +10,17 @@ class Album < ActiveRecord::Base
   
   # returns only the last n albums released during the past 6 months.
   scope :recent, ->(n) { where("released_on > ?", 6.month.ago).order("released_on desc").limit(n) }
+
+  after_create :detele_cache_key
+
+  def self.latest_two_albums
+    Rails.cache.fetch("latest_two_albums") do
+      order("released_on desc").limit(2)
+    end
+  end
+
+  def self.detele_cache_key
+  	Rails.cache.delete("latest_two_albums")
+  end
+
 end
