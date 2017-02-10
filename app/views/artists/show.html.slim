@@ -21,6 +21,6 @@ hr
 dl.dl-horizontal
   dt NAME
   dd RELEASED
-  - @artist.albums.each do |album|
+  - @artist.albums.uniq.each do |album|
     dt= link_to album.name, album
     dd= album.released_on
